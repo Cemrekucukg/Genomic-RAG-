@@ -1,0 +1,192 @@
+[
+  {
+    "test": "normal_variants_and_symptoms",
+    "question": "What are the most recently reported variants in RARS1 and their associated symptoms?",
+    "result": {
+      "gene": "RARS1",
+      "question": "What are the most recently reported variants in RARS1 and their associated symptoms?",
+      "summary": "Summary omitted to avoid uncited claims. See items for cited evidence.",
+      "items": [
+        {
+          "variant": "c.5A>G (p.Asp2Gly)",
+          "associated_diseases": [
+            "hypomyelinating leukodystrophy"
+          ],
+          "phenotypes": [
+            "early onset epileptic encephalopathy",
+            "hypomyelination",
+            "nystagmus",
+            "spasticity",
+            "developmental delay",
+            "intellectual disability"
+          ],
+          "citations": [
+            "PMID:38618971",
+            "PMID:37186453"
+          ],
+          "evidence_snippet_numbers": [
+            1,
+            3
+          ]
+        },
+        {
+          "variant": "c.1535G>A (p.Arg512Gln)",
+          "associated_diseases": [
+            "hypomyelinating leukodystrophy"
+          ],
+          "phenotypes": [
+            "developmental delay",
+            "intellectual disability"
+          ],
+          "citations": [
+            "PMID:37186453"
+          ],
+          "evidence_snippet_numbers": [
+            2
+          ]
+        },
+        {
+          "variant": "c.1382G>A (p.Arg461His)",
+          "associated_diseases": [
+            "hypomyelinating leukodystrophy"
+          ],
+          "phenotypes": [
+            "developmental delay",
+            "intellectual disability"
+          ],
+          "citations": [
+            "PMID:37186453"
+          ],
+          "evidence_snippet_numbers": [
+            2
+          ]
+        },
+        {
+          "variant": "c.5A>T (p.Asp2Val)",
+          "associated_diseases": [
+            "hypomyelinating leukodystrophy"
+          ],
+          "phenotypes": [
+            "severe clinical manifestations of developmental epileptic encephalopathy (DEE)"
+          ],
+          "citations": [
+            "PMID:37186453"
+          ],
+          "evidence_snippet_numbers": [
+            2
+          ]
+        },
+        {
+          "variant": "c.2T>C (p.Met1Thr)",
+          "associated_diseases": [
+            "HLD-9"
+          ],
+          "phenotypes": [
+            "hypomyelination",
+            "language delay",
+            "intellectual disability",
+            "developmental delay"
+          ],
+          "citations": [
+            "PMID:38618971"
+          ],
+          "evidence_snippet_numbers": [
+            4
+          ]
+        }
+      ],
+      "not_found": {
+        "message": "N/A",
+        "citations": []
+      },
+      "guardrail_removed_items": [],
+      "guardrail_pass": true,
+      "_retrieval_debug": {
+        "k": 5,
+        "snippets": [
+          {
+            "pmid": "38618971",
+            "doi": "10.1002/mgg3.2435",
+            "id": "38618971_2",
+            "distance": 0.3841142169607105
+          },
+          {
+            "pmid": "37186453",
+            "doi": "10.1002/epi4.12751",
+            "id": "37186453_1",
+            "distance": 0.4178855971459532
+          },
+          {
+            "pmid": "37186453",
+            "doi": "10.1002/epi4.12751",
+            "id": "37186453_2",
+            "distance": 0.4428481004021006
+          },
+          {
+            "pmid": "38618971",
+            "doi": "10.1002/mgg3.2435",
+            "id": "38618971_1",
+            "distance": 0.4483308547534898
+          },
+          {
+            "pmid": "31814314",
+            "doi": "10.1002/acn3.50960",
+            "id": "31814314_0",
+            "distance": 0.4523388564814496
+          }
+        ]
+      }
+    }
+  },
+  {
+    "test": "trick_unrelated_disease",
+    "question": "Is RARS1 associated with Alzheimer's disease?",
+    "result": {
+      "gene": "RARS1",
+      "question": "Is RARS1 associated with Alzheimer's disease?",
+      "summary": "No supported variant claims after guardrail validation.",
+      "items": [],
+      "not_found": {
+        "message": "Not found in retrieved literature.",
+        "citations": []
+      },
+      "guardrail_removed_items": [],
+      "guardrail_pass": true,
+      "_retrieval_debug": {
+        "k": 5,
+        "snippets": [
+          {
+            "pmid": "31814314",
+            "doi": "10.1002/acn3.50960",
+            "id": "31814314_0",
+            "distance": 0.4902836384438553
+          },
+          {
+            "pmid": "38618971",
+            "doi": "10.1002/mgg3.2435",
+            "id": "38618971_2",
+            "distance": 0.493739527234022
+          },
+          {
+            "pmid": "31814314",
+            "doi": "10.1002/acn3.50960",
+            "id": "31814314_2",
+            "distance": 0.5115254347109758
+          },
+          {
+            "pmid": "38618971",
+            "doi": "10.1002/mgg3.2435",
+            "id": "38618971_0",
+            "distance": 0.5320344177814565
+          },
+          {
+            "pmid": "37186453",
+            "doi": "10.1002/epi4.12751",
+            "id": "37186453_0",
+            "distance": 0.5363454513924206
+          }
+        ]
+      }
+    }
+  }
+]
