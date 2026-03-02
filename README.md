@@ -6,6 +6,69 @@ The system dynamically retrieves recent publications, stores them in a vector da
 
 ---
 
+## Design Decisions & Justifications
+
+### 1. PubMed API Rate Limits Handling
+
+The PubMed ingestion is implemented using Biopython's Entrez module.  
+To comply with NCBI rate limits:
+
+- An email address is provided via `Entrez.email`.
+- Requests are batched (search → fetch pattern).
+- The ingestion process avoids aggressive parallel calls.
+- The system is designed to fetch a limited number of recent abstracts per run.
+
+This ensures compliance with NCBI usage policies and prevents temporary IP blocking.
+
+---
+
+### 2. Embedding Model Choice
+
+We selected `BAAI/bge-base-en-v1.5` for the following reasons:
+
+- Strong semantic retrieval performance in scientific/technical text.
+- Good balance between embedding quality and computational efficiency.
+- Compatible with CPU environments (no GPU required).
+- Performs well on biomedical-style terminology and mutation patterns.
+
+The model enables reliable retrieval of abstracts mentioning specific gene variants.
+
+---
+
+### 3. Phenotype vs Variant Identification
+
+We ensured correct separation between genetic variants and phenotypes using:
+
+1. **Chunking Strategy**
+   - Abstracts are chunked carefully to preserve mutation patterns such as:
+     - `c.5A>G`
+     - `p.Asp2Gly`
+   - Chunking avoids splitting variant strings across boundaries.
+
+2. **LLM Prompt Constraints**
+   - The LLM is explicitly instructed to:
+     - Extract variant identifiers separately.
+     - Extract associated diseases and phenotypes separately.
+     - Use only information present in retrieved snippets.
+
+3. **Strict JSON Schema**
+   - Variants are structured under:
+     - `"variant"`
+   - Clinical manifestations are structured under:
+     - `"phenotypes"`
+   - Diseases are structured under:
+     - `"associated_diseases"`
+
+4. **Hallucination Guardrail**
+   - Validates that:
+     - The extracted variant string appears in the retrieved context.
+     - Citations exist in snippet headers.
+   - Unsupported extractions are removed automatically.
+
+This multi-layer approach minimizes misclassification between mutation identifiers and clinical features.
+
+---
+
 ## System Architecture
 
 1. **Dynamic Data Ingestion**
