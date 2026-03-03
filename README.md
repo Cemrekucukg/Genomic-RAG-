@@ -107,6 +107,9 @@ This multi-layer approach minimizes misclassification between mutation identifie
 ```bash
 pip install -r requirements.txt
 ```
+
+---
+
 ## Usage
 
 ### 1. Ingest PubMed Data
@@ -137,19 +140,11 @@ This generates `eval_results.json`.
 
 ---
 
-## Design Choices
-
-- **Embedding Model:** BGE-base for strong semantic retrieval.
-- **Strict JSON Schema:** Prevents malformed outputs.
-- **Guardrail Layer:** Ensures no hallucinated claims.
-- **Citation Enforcement:** Every variant/disease claim must reference PMID or DOI.
-
----
-
 ## Deliverables
 
 - `main.py`
 - `ingest.py`
+- `chunk_and_index.py`
 - `requirements.txt`
 - `README.md`
 - `eval_results.json`
